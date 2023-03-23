@@ -3,7 +3,10 @@
 <script>
 
     main();
+    
     async function main() {
+        var map = null;
+        
         await ymaps3.ready;
         const { YMap, YMapDefaultSchemeLayer, YMapControls } = ymaps3;
         const LOCATION = {
@@ -21,14 +24,5 @@
         ]);
     }
 
-    ymaps3.ready.then(() => {
-        console.log('Loaded');
-        const map = new ymaps3.YMap(document.getElementById('YMapsID'), {
-            location: {
-            center: [37.64, 55.76],
-            zoom: 10
-            }
-        });
-    });
 </script>
 <div id="YMapsID" style="width: 450px; height: 350px;"></div>
