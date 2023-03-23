@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <script src="https://api-maps.yandex.ru/3.0/?apikey=2012c35c-50dc-4dc6-af2e-2625b428dc40&lang=ru_RU"></script>
 <script>
-  ymaps3.ready.then(() => {
-    console.log('Loaded');
-    const map = new ymaps3.YMap(document.getElementById('YMapsID'), {
-      location: {
-        center: [37.64, 55.76],
-        zoom: 10
-      }
+
+    main();
+    async function main() {
+        await ymaps3.ready;
+        const { YMap, YMapDefaultSchemeLayer, YMapControls } = ymaps3;
+
+        const { YMapZoomControl } = await ymaps3.import(
+            "@yandex/ymaps3-controls@0.0.1"
+        );
+
+        map = new YMap(document.getElementById("YMapsID"), { location: LOCATION }, [
+        new YMapDefaultSchemeLayer(),
+        new YMapControls({ position: "right" }, [new YMapZoomControl({})])
+        ]);
+    }
+
+    ymaps3.ready.then(() => {
+        console.log('Loaded');
+        const map = new ymaps3.YMap(document.getElementById('YMapsID'), {
+            location: {
+            center: [37.64, 55.76],
+            zoom: 10
+            }
+        });
     });
-  });
 </script>
 <div id="YMapsID" style="width: 450px; height: 350px;"></div>
