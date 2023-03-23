@@ -23,9 +23,11 @@
         new YMapControls({ position: "right" }, [new YMapZoomControl({})])
         ]);
 
+        map.addChild(new YMapDefaultFeaturesLayer());
+
         const el = document.createElement('img');
         el.className = 'my-marker';
-        el.src = '../img/showroom/location-map.png';
+        el.src = 'location-map.png';
         // el.onclick = () => map.update({ location: { ...LOCATION, duration: 400 } });
         map.addChild(new YMapMarker({ coordinates: LOCATION.center }, el));        
     }
