@@ -6,6 +6,10 @@
     async function main() {
         await ymaps3.ready;
         const { YMap, YMapDefaultSchemeLayer, YMapControls } = ymaps3;
+        const location = {
+            center: [37.64, 55.76],
+            zoom: 10
+            };
 
         const { YMapZoomControl } = await ymaps3.import(
             "@yandex/ymaps3-controls@0.0.1"
